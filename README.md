@@ -8,6 +8,7 @@
 This is the official implementation of the paper 'Bootstrapping Grounded Chain-of-Thought in Multimodal LLMs for Data-Efficient Model Adaptation'.
 
 # News📰
+* **`[2025/07/24]`:**🎉 GCoT is selected as **Highlight Paper** of ICCV 2025
 * **`[2025/07/03]`:**🔥**We have released our paper [[Arxiv](https://arxiv.org/pdf/2507.02859)].**
 * **`[2025/06/26]`:**🎉**GCoT is accepted by ICCV 2025**
 
