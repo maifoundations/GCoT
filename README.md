@@ -17,6 +17,49 @@ To ensure that MLLMs can adapt and excel in specialized applications, we propose
 
 <img src="assets/Bootstrapping.gif">
 
+# Set up 📐
+## Environment
+```
+git@github.com:maifoundations/GCoT.git
+cd GCoT
+
+# build environment
+conda create -n GCoT python=3.9
+conda activate GCoT
+
+pip install -e .
+```
+
+## Data Preparation
+To start the bootstrapping loop, the data should be structured in the following format. We added the "cot" data on top of the llava data format.
+```
+    {
+        "id": 17449,
+        "image": "29099.png",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nLook at the table. Then answer the question. At a price of $325, is there a shortage or a surplus?\nOptions:\nshortage\nsurplus"
+            },
+            {
+                "from": "gpt",
+                "value": "shortage"
+            }
+        ],
+        "ques_type": "multi_choice",
+        "cot": "{To determine whether there is a shortage or surplus at a price of $325, we need to compare the quantity demanded and the quantity supplied at that price.\\n\\nStep 1: Identify the quantity demanded at a price of $325. According to the table, at a price of $325, the quantity demanded is 10,600.\\n\\nStep 2: Identify the quantity supplied at a price of $325. According to the table, at a price of $325, the quantity supplied is 7,900.\\n\\nStep 3: Compare the quantity demanded and the quantity supplied. Since the quantity demanded (10,600) is greater than the quantity supplied (7,900), there is a shortage.\\n\\n*Answer*: shortage\"}",
+    }
+```
+
+## Training
+You can start the bootstrapping loop on the structured data using the following script:
+```
+sh bootstrapping.sh data.json PATH_TO_IMAGE
+```
+
+Additionally, you can modify the script to adjust the number of bootstrapping iterations and the training sample size.
+With this script, you can easily equip your CoT with grounding information.
+
 # Citation🎓
 ```
 @article{xia2025bootstrapping,

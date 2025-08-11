@@ -1,15 +1,13 @@
 #!/bin/bash
 
-GPU=1
+GPU=0
 # Number of rounds for bootstrapping
 num_rounds=5
 # Number of samples
 sample_num=8
 
-train_list=("PATH_TO_COT_FILE")
-train_image=("PATH_TO_TRAIN_IMAGE")
-test_image=("PATH_TO_TEST_IMAGE")
-test_file=("PATH_TO_TEST_FILE")
+train_list=$1
+train_image=$2
 
 # Create a root output directory
 root_output_dir="./exp"
@@ -30,8 +28,6 @@ echo "All files will be stored in: $unique_dir"
 for ((j=0; j<${#train_list[@]}; j++)); do
     train_file=${train_list[j]}
     image_folder=${train_image[j]}
-    test_folder=${test_image[j]}
-    question_file=${test_file[j]}
 
     python tools/get_sub_question.py \
         --file_name ${unique_dir} \
